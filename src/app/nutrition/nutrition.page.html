@@ -1,3 +1,4 @@
+<!-- src/nutrition/nutrition.page.html -->
 <ion-header>
   <ion-toolbar>
     <ion-title>Nutrition</ion-title>
@@ -6,14 +7,26 @@
 
 <ion-content>
   <ion-item>
-    <ion-label position="floating">Calories Consumed</ion-label>
-    <ion-input type="number" [(ngModel)]="caloriesConsumed"></ion-input>
+    <ion-label>Meal</ion-label>
+    <ion-select [(ngModel)]="selectedMeal" (ionChange)="calculateCalories()">
+      <ion-select-option *ngFor="let meal of meals" [value]="meal.name">{{ meal.name }}</ion-select-option>
+    </ion-select>
   </ion-item>
-  <ion-button expand="full" (click)="addCalories()">Add Calories</ion-button>
+
+  <ion-item>
+    <ion-label position="floating">Quantity (g)</ion-label>
+    <ion-input type="number" [(ngModel)]="quantity" (ionInput)="calculateCalories()" min="1" value="100"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Calculated Calories: {{ calculatedCalories.toFixed(0) }} cal</ion-label>
+  </ion-item>
+
+  <ion-button expand="full" (click)="addCalories()">Add Meal</ion-button>
 
   <ion-list>
     <ion-item *ngFor="let log of calorieLogs">
-      {{ log }} calories
+      <ion-label>{{ log.quantity }}g {{ log.name }} - {{ log.calories.toFixed(0) }} calories</ion-label>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -1,10 +1,11 @@
+// src/nutrition/nutrition.module.ts
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { NutritionPageRoutingModule } from './nutrition-routing.module';
 import { NutritionPage } from './nutrition.page';
-import { IonicStorageModule } from '@ionic/storage-angular'; // Importer IonicStorageModule
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 @NgModule({
   imports: [
@@ -12,7 +13,7 @@ import { IonicStorageModule } from '@ionic/storage-angular'; // Importer IonicSt
     FormsModule,
     IonicModule,
     NutritionPageRoutingModule,
-    IonicStorageModule.forRoot() // Ajouter ici pour activer le stockage
+    IonicStorageModule.forRoot()
   ],
   declarations: [NutritionPage]
 })
