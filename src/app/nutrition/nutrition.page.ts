@@ -12,6 +12,7 @@ import { AlertController } from '@ionic/angular';
 export class NutritionPage implements OnInit {
   caloriesConsumed: number = 0;
   calorieLogs: { date: string; name: string; calories: number; quantity: number }[] = [];
+  maxCalories: number = 2000; // Valeur par défaut, peut être modifiée par l'utilisateur
 
   meals: Meal[] = [
     { name: 'Salad', caloriesPer100g: 100 },
@@ -36,7 +37,7 @@ export class NutritionPage implements OnInit {
     { name: 'Honey', caloriesPer100g: 304 },
     { name: 'Granola', caloriesPer100g: 471 },
   ];
-  
+
   selectedMeal: string = '';
   quantity: number = 100; // Valeur par défaut de 100g
   calculatedCalories: number = 0;
@@ -45,20 +46,7 @@ export class NutritionPage implements OnInit {
 
   async ngOnInit() {
     await this.storage.create();
-    await this.resetDailyConsumption();
     this.calorieLogs = (await this.storage.get('calorieLogs')) || [];
-  }
-
-  async resetDailyConsumption() {
-    const today = new Date().toISOString().split('T')[0]; // Date actuelle
-    const lastLoggedDate = this.calorieLogs.length ? this.calorieLogs[this.calorieLogs.length - 1].date : null;
-
-    if (lastLoggedDate !== today) {
-      // Réinitialisez les consommations ici si la date ne correspond pas à aujourd'hui
-      this.calorieLogs = [];
-      await this.storage.set('calorieLogs', this.calorieLogs);
-      this.caloriesConsumed = 0; // Réinitialisez aussi le compteur de calories
-    }
   }
 
   calculateCalories() {
@@ -68,16 +56,6 @@ export class NutritionPage implements OnInit {
     } else {
       this.calculatedCalories = 0;
     }
-  }
-
-  async showAlert() {
-    const alert = await this.alertController.create({
-      header: 'Calorie Limit Exceeded',
-      message: 'You have exceeded your daily calorie limit!',
-      buttons: ['OK'],
-    });
-
-    await alert.present();
   }
 
   async addCalories() {
@@ -91,7 +69,7 @@ export class NutritionPage implements OnInit {
       this.caloriesConsumed += this.calculatedCalories; // Total calories consumed
       
       // Vérifiez si les calories dépassent la limite
-      if (this.caloriesConsumed > 2000) { // Changez 2000 avec votre seuil désiré
+      if (this.caloriesConsumed > this.maxCalories) {
         await this.showAlert(); // Affichez l'alerte
       }
       
@@ -99,5 +77,15 @@ export class NutritionPage implements OnInit {
       this.quantity = 100;
       this.calculatedCalories = 0;
     }
+  }
+
+  async showAlert() {
+    const alert = await this.alertController.create({
+      header: 'Alert',
+      message: 'You have exceeded your maximum calorie limit!',
+      buttons: ['OK'],
+    });
+
+    await alert.present();
   }
 }
