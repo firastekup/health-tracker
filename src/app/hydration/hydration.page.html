@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Hydration</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Water Intake (ml)</ion-label>
+    <ion-input type="number" [(ngModel)]="waterIntake"></ion-input>
+  </ion-item>
+  
+  <ion-button expand="full" (click)="addWater()">Add Water</ion-button>
+
+  <ion-list>
+    <ion-item *ngFor="let log of waterLogs">
+      <ion-label>{{ log }}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
