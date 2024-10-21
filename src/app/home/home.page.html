@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label position="floating">Hauteur (cm)</ion-label>
+    <ion-input type="number" [(ngModel)]="hauteur"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Poids (kg)</ion-label>
+    <ion-input type="number" [(ngModel)]="poids"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Année de naissance</ion-label>
+    <ion-input type="number" [(ngModel)]="annee"></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" (click)="calculate()">Calculer</ion-button>
+</ion-content>

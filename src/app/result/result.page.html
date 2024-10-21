@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Résultats</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h2>Résultats de vos calculs</h2>
+  
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>IMC</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Votre IMC est: {{ imc }}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Calories Max</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Nombre maximal de calories à ne pas dépasser: {{ caloriesMax }} calories
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Fourchette de poids idéal</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Votre poids idéal devrait être compris entre: {{ weightLimits.min }} kg et {{ weightLimits.max }} kg
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Quantité d'eau</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Vous devez boire: {{ water }} litres d'eau par jour
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Date du calcul</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Date: {{ date | date:'medium' }}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" routerLink="/home">Recalculer</ion-button>
+</ion-content>
