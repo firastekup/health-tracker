@@ -1,0 +1,26 @@
+/* src/home/home.page.scss */
+.title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .home-content {
+    padding: 20px;
+    background-color: #f9f9f9; /* Couleur de fond douce */
+  }
+  
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espace entre les boutons */
+  }
+  
+  .nav-button {
+    --background: #3880ff; /* Couleur primaire */
+    --color: white; /* Couleur du texte */
+    font-size: 1.2rem;
+    border-radius: 8px; /* Coins arrondis pour les boutons */
+  }
+  

@@ -1,37 +1,43 @@
 <!-- src/nutrition/nutrition.page.html -->
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Nutrition</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title class="title">Nutrition Tracker</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-item>
-    <ion-label position="floating">Max Calories</ion-label>
-    <ion-input type="number" [(ngModel)]="maxCalories" min="0"></ion-input>
-  </ion-item>
+<ion-content class="nutrition-content">
+  <div class="input-group">
+    <ion-item>
+      <ion-label position="floating">Max Calories</ion-label>
+      <ion-input type="number" [(ngModel)]="maxCalories" min="0"></ion-input>
+    </ion-item>
+  </div>
 
-  <ion-item>
-    <ion-label>Meal</ion-label>
-    <ion-select [(ngModel)]="selectedMeal" (ionChange)="calculateCalories()">
-      <ion-select-option *ngFor="let meal of meals" [value]="meal.name">{{ meal.name }}</ion-select-option>
-    </ion-select>
-  </ion-item>
+  <div class="input-group">
+    <ion-item>
+      <ion-label>Meal</ion-label>
+      <ion-select [(ngModel)]="selectedMeal" (ionChange)="calculateCalories()">
+        <ion-select-option *ngFor="let meal of meals" [value]="meal.name">{{ meal.name }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </div>
 
-  <ion-item>
-    <ion-label position="floating">Quantity (g)</ion-label>
-    <ion-input type="number" [(ngModel)]="quantity" (ionInput)="calculateCalories()" min="1" value="100"></ion-input>
-  </ion-item>
+  <div class="input-group">
+    <ion-item>
+      <ion-label position="floating">Quantity (g)</ion-label>
+      <ion-input type="number" [(ngModel)]="quantity" (ionInput)="calculateCalories()" min="1" value="100"></ion-input>
+    </ion-item>
+  </div>
 
-  <ion-item>
-    <ion-label>Calculated Calories: {{ calculatedCalories.toFixed(0) }} cal</ion-label>
-  </ion-item>
+  <div class="calories-display">
+    <ion-label>Calculated Calories: <strong>{{ calculatedCalories.toFixed(0) }} cal</strong></ion-label>
+  </div>
 
-  <ion-button expand="full" (click)="addCalories()">Add Meal</ion-button>
+  <ion-button expand="full" class="add-button" (click)="addCalories()">Add Meal</ion-button>
 
   <ion-list>
-    <ion-item *ngFor="let log of calorieLogs">
-      <ion-label>{{ log.date }}: {{ log.quantity }}g {{ log.name }} - {{ log.calories.toFixed(0) }} calories</ion-label>
+    <ion-item *ngFor="let log of calorieLogs" class="log-item">
+      <ion-label>{{ log.date }}: {{ log.quantity }}g {{ log.name }} - {{ log.calories.toFixed(0) }} cal</ion-label>
     </ion-item>
   </ion-list>
 </ion-content>

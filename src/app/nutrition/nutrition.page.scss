@@ -1,23 +1,35 @@
 /* src/nutrition/nutrition.page.scss */
-ion-header {
-    background: #3880ff;
-    color: white;
-  }
-  
-  ion-content {
-    padding: 16px;
-  }
-  
-  ion-item {
-    margin-bottom: 16px;
-  }
-  
-  h2 {
-    margin: 0;
-  }
-  
-  p {
-    margin: 0;
-    color: gray;
-  }
-  
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.nutrition-content {
+  padding: 10px; /* Réduction du padding global */
+  background-color: #f9f9f9;
+}
+
+.input-group {
+  margin-bottom: 10px; /* Réduction de l'espace entre les éléments */
+}
+
+.calories-display {
+  text-align: center;
+  font-size: 1.2rem; /* Taille de police légèrement plus grande */
+  font-weight: bold;
+  margin: 10px 0; /* Un peu plus d'espace autour */
+  color: #3880ff; /* Couleur primaire */
+}
+
+.add-button {
+  margin-top: 12px; /* Espace au-dessus du bouton */
+  background-color: #3880ff; /* Couleur primaire */
+}
+
+.log-item {
+  border-bottom: 1px solid #ccc;
+  padding: 8px 0; /* Réduction de l'espace autour des logs */
+  font-size: 0.9rem; /* Taille de police pour les logs */
+  color: #333; /* Couleur du texte */
+}
